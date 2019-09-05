@@ -43,58 +43,73 @@ public class GoodsController {
 
     @RequestMapping(value="PublishGoods",method=RequestMethod.POST,consumes = "multipart/form-data")
     @ResponseBody
-//    public String publishGoods(@RequestParam("photo") MultipartFile file, HttpServletRequest request, Goods goods, Model model)throws IOException {
-//        String sqlPath = null;
-//        //获取文件名
-//        String filename = file.getOriginalFilename();
-//        //获取文件保存到服务器上的地址
-//        String path = request.getServletContext().getRealPath("") + "/images/goods_pic/" + filename;
-//        String CTpath="/campustrading/images/goods_pic/" + filename;
-//
-//        File f = new File(path);
-//        //判断upload文件夹是否存在，如果不存在则创建
-//        if (!f.getParentFile().exists()) {
-//            f.getParentFile().mkdirs();
-//        }
-//        //将上传的文件传输到指定路径
-//        file.transferTo(f);
-//
-//        File c = new File(CTpath);
-//        //判断upload文件夹是否存在，如果不存在则创建
-//        if (!c.getParentFile().exists()) {
-//            c.getParentFile().mkdirs();
-//        }
-//        //将上传的文件传输到指定路径
-//        file.transferTo(c);
-//
-//        //用户编号是否唯一
-//        //传入照片地址进数据库
-//        sqlPath = "/campustrading/images/goods_pic/" + filename;
+    public String publishGoods(@RequestParam("photo") MultipartFile file,
+                               HttpServletRequest request, Goods goods, Model model)throws IOException {
+        try{
+            String sqlPath = null;
+            //获取文件名
+            String filename = file.getOriginalFilename();
+            //获取文件保存到服务器上的地址
+            String path = request.getServletContext().getRealPath("") + "images/goods_pic/" + filename;
+            String CTpath="/campustrading/images/goods_pic/" + filename;
 
-    public String upload(MultipartFile file,Goods goods, Model model){
+            File f = new File(path);
+            //判断upload文件夹是否存在，如果不存在则创建
+            if (!f.getParentFile().exists()) {
+                f.getParentFile().mkdirs();
+            }
+            //将上传的文件传输到指定路径
+            file.transferTo(f);
+            File c = new File(CTpath);
+            //判断upload文件夹是否存在，如果不存在则创建
+            if (!c.getParentFile().exists()) {
+                c.getParentFile().mkdirs();
+            }
+            //将上传的文件传输到指定路径
+            file.transferTo(c);
+            //用户编号是否唯一
+            //传入照片地址进数据库
+            sqlPath = "/campustrading/images/goods_pic/" + filename;
+            goods.setPicture(sqlPath);
 
-        //获取上传文件的元素名字
-        String name=file.getOriginalFilename();
 
-        //上传文件
-        try {
-            file.transferTo(new File("D:/upload/" +name));
-        } catch (IOException e) {
+        }catch (IOException e){
             e.printStackTrace();
-        }
-        String sqlPath="/campustrading/images/goods_pic/" +name;
-        //存储数据库，只需要把filename写入数据库
 
-        model.addAttribute("file",name);
-        goods.setPicture(sqlPath);
+        }
         int g=goodsService.insertGoods(goods);
-        System.out.println(goods+"\n"+g);
+        System.out.println(g);
         if(g>0){
             return "1";
         }else {
             return "0";
         }
     }
+
+//    public String upload(MultipartFile file,Goods goods, Model model){
+//
+//        //获取上传文件的元素名字
+//        String name=file.getOriginalFilename();
+//
+//        //上传文件
+//        try {
+//            file.transferTo(new File("D:/upload/" +name));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String sqlPath="/campustrading/images/goods_pic/" +name;
+//        //存储数据库，只需要把filename写入数据库
+//
+//        model.addAttribute("file",name);
+//        goods.setPicture(sqlPath);
+//        int g=goodsService.insertGoods(goods);
+//        System.out.println(goods+"\n"+g);
+//        if(g>0){
+//            return "1";
+//        }else {
+//            return "0";
+//        }
+//    }
 
     @RequestMapping(value = "SelectGoods",produces="application/json;charset=utf-8")
     @ResponseBody

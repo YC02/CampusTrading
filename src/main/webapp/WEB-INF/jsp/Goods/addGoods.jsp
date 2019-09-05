@@ -90,33 +90,25 @@
     $("#publish").click(function () {
         var formData = new FormData($("#form")[0]);
         $.ajax({
-            url: "/campustrading/PublishGoods",
-            type: "POST",
+            url:"/campustrading/PublishGoods",
+            type:"post",
             async: false,
             cache: false,//上传文件无需缓存
             processData: false,//用于对data参数进行序列化处理 这里必须false
             contentType: false, //必须
-            data: formData,
-            success:function(msg){
-                if(msg){
-                    alert('提交成功！');
-                    window.location.reload();
+            data:formData,
+            success:function (data) {
+                if(data=="1"){
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        layer.msg('成功发布新商品!',{icon: 1,time:2000,anim:3});
+                    });
                 }else {
-                    alert('提交失败！');
-                    window.location.reload();
+                    layui.use('layer', function(){
+                        var layer = layui.layer;
+                        layer.alert('抱歉，发布新商品失败。',{icon: 5,time:2000,anim:3});
+                    });
                 }
-                // success: function (data) {
-                //     if (data == "1") {
-                //         layui.use('layer', function () {
-                //             var layer = layui.layer;
-                //             layer.msg('成功发布新商品!', {icon: 1, time: 2000, anim: 3});
-                //         });
-                //     } else {
-                //         layui.use('layer', function () {
-                //             var layer = layui.layer;
-                //             layer.alert('抱歉，发布新商品失败。', {icon: 5, time: 2000, anim: 3});
-                //         });
-                //     }
             }
         })
     });
