@@ -17,13 +17,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <spring.version>5.1.9.RELEASE</spring.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
@@ -33,60 +34,71 @@
       <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aop</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>4.3.5.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context-support</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>4.3.9.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-expression -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-expression</artifactId>
-      <version>4.3.9.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-web</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc-portlet -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc-portlet</artifactId>
-      <version>4.3.10.RELEASE</version>
+      <version>4.3.25.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.mybatis</groupId>
